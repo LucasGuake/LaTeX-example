@@ -1,0 +1,84 @@
+% 文档类：article（短文），字体大小12pt，A4纸
+\documentclass[12pt,a4paper]{article}
+
+% 导入必要宏包（解决中文、图表、数学公式等问题）
+\usepackage{ctex}         % 支持中文
+\usepackage{amsmath}      % 高级数学公式
+\usepackage{graphicx}     % 插入图片
+\usepackage{enumerate}    % 自定义列表
+\usepackage{hyperref}     % 超链接（目录、参考文献）
+
+% 文档标题、作者、日期（\maketitle会自动生成标题区）
+\title{LaTeX 基础使用示例}
+\author{张三 \quad 李四 \\ 某大学某学院}  % \quad 用于作者间空格
+\date{\today}  % \today 自动填充当前日期，也可手动写如2025年10月16日
+
+% 开始文档内容
+\begin{document}
+
+% 生成标题区（必须在\begin{document}之后）
+\maketitle
+
+% 摘要环境（学术文档常用）
+\begin{abstract}
+本文以示例形式介绍LaTeX的基础语法，包括文档结构、数学公式、列表、图片插入和参考文献管理。通过该示例，读者可快速掌握LaTeX的核心使用方法，满足学术论文或技术文档的编写需求。
+\end{abstract}
+
+% 生成目录（自动抓取章节标题）
+\tableofcontents
+\clearpage  % 强制目录页单独一页，内容从新页开始
+
+% 1级章节（section）
+\section{引言}
+LaTeX是一种基于TeX的排版系统，特别适合包含大量数学公式、图表的学术文档。与Word等可视化排版工具不同，LaTeX通过“代码”控制格式，能实现更统一、专业的排版效果，广泛应用于数学、物理、计算机等领域。
+
+% 2级章节（subsection）
+\subsection{LaTeX的优势}
+LaTeX的核心优势体现在以下3点：
+\begin{enumerate}[1.]  % 自定义列表编号为“1.”“2.”
+    \item 自动处理格式：无需手动调整段落、标题样式，专注内容创作。
+    \item 数学公式支持：通过amsmath等宏包，轻松编写复杂公式。
+    \item 跨平台兼容：生成的PDF文档在任何设备上格式一致，无错乱风险。
+\end{enumerate}
+
+% 1级章节：数学公式示例
+\section{数学公式}
+LaTeX支持“行内公式”和“独立公式”两种形式，以下为常见示例。
+
+\subsection{行内公式}
+行内公式嵌入正文，用\$符号包裹，例如：线性方程\( y = ax + b \)，其中\( a \)为斜率，\( b \)为截距。
+
+\subsection{独立公式}
+独立公式单独成行，用equation环境包裹（自动编号）：
+\begin{equation}  % 公式自动编号为(1)
+    f(x) = \int_{0}^{1} \frac{\sin(t)}{t + x} dt
+\end{equation}
+公式（1）为一个定积分表达式，\int表示积分符号，_{0}和^{1}分别指定积分上下限。
+
+% 1级章节：图片插入示例
+\section{图片插入}
+插入图片需先准备图片文件（如example.png），并放在与.tex文件同一目录下。以下为单图插入示例：
+
+\begin{figure}[h]  % [h]表示图片优先放在当前位置（here）
+    \centering  % 图片居中
+    \includegraphics[width=0.6\textwidth]{example.png}  % 宽度设为页面60%
+    \caption{示例图片}  % 图片标题（自动编号）
+    \label{fig:example}  % 图片标签，用于后文引用
+\end{figure}
+
+如上图\ref{fig:example}所示，通过graphicx宏包的\includegraphics命令可灵活调整图片大小和位置。
+
+% 1级章节：参考文献示例
+\section{参考文献}
+参考文献用thebibliography环境管理，通过\cite{key}引用。
+
+\begin{thebibliography}{9}  % {9}表示参考文献最多9篇（可调整为99）
+    \bibitem{latex-guide}  % 引用标识（如\cite{latex-guide}）
+    刘海洋. LaTeX入门[M]. 北京：电子工业出版社，2013.
+    
+    \bibitem{amsmath-doc}
+    Leslie Lamport. A Document Preparation System[M]. Reading: Addison-Wesley, 1994.
+\end{thebibliography}
+
+% 结束文档
+\end{document}
